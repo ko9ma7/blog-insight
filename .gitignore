@@ -1,0 +1,17 @@
+node_modules/
+.dev.vars
+.env
+.env.*
+.wrangler/
+*.log
+.DS_Store
+__pycache__/
+# Personal credentials, local deployment state, and generated build output
+*.pem
+*.p12
+*.key
+credentials.json
+secrets.json
+_site/
+dist/
+.github-bootstrap-*.log

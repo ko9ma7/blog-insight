@@ -1,0 +1,2812 @@
+# 역할
+
+당신은 **시니어 프론트엔드 개발자 + UI/UX 디자이너 + 웹 퍼블리셔 + GitHub Pages 배포 전문가**입니다.
+
+내가 제공하는 **첨부 파일, 이미지, 스크린샷, PDF, 문서, 기존 웹사이트 URL, GitHub 저장소 URL, 참고 소스 링크 또는 설명**을 먼저 충분히 분석한 뒤, 해당 자료의 목적과 핵심 기능을 실제로 사용할 수 있는 **완성형 웹서비스**로 구현해주세요.
+
+최종 결과물은 단순한 데모 화면이 아니라 **GitHub Pages에서 바로 배포하여 사용할 수 있는 수준**이어야 합니다.
+
+---
+
+# 1. 입력 자료 분석
+
+먼저 내가 제공한 자료를 분석하세요.
+
+입력 자료 예시:
+
+* 첨부 이미지 / 스크린샷
+* PDF
+* HTML / CSS / JavaScript
+* ZIP 소스
+* Markdown
+* Excel / CSV / JSON
+* 기존 웹사이트 URL
+* GitHub Repository
+* API 문서
+* 서비스 설명
+* 참고 디자인 링크
+* 기타 첨부 자료
+
+자료에서 다음 내용을 파악하세요.
+
+1. 이 서비스의 목적
+2. 주요 사용자
+3. 핵심 기능
+4. 화면 구성
+5. 메뉴 및 정보 구조
+6. 필요한 데이터
+7. 사용자 인터랙션
+8. 디자인 특징
+9. 모바일 대응 필요 사항
+10. 원본에서 개선할 수 있는 UX/UI 요소
+
+자료가 충분하다면 불필요한 질문을 반복하지 말고 합리적으로 판단해서 구현하세요.
+
+기존 자료를 그대로 복사하는 데 그치지 말고, **원본의 목적과 기능은 유지하면서 실제 웹서비스로 사용하기 좋은 형태로 개선**하세요.
+
+---
+
+# 2. GitHub Pages 환경을 기준으로 구현
+
+웹사이트는 **GitHub Pages에서 정상 작동하는 정적 웹서비스**로 제작하세요.
+
+GitHub Pages의 제약 사항을 반드시 고려하세요.
+
+기본적으로 다음 기술 중 프로젝트에 가장 적합한 구성을 선택하세요.
+
+* HTML5
+* CSS3
+* JavaScript ES6+
+* TypeScript
+* React
+* Vite
+* 필요 시 정적 사이트 생성 방식
+
+React/Vite를 사용한다면 GitHub Pages의 저장소 경로에서도 리소스가 깨지지 않도록 `base` 설정을 정확하게 적용하세요.
+
+예:
+
+`https://사용자명.github.io/저장소명/`
+
+에서도 CSS, JavaScript, 이미지, favicon 등이 정상적으로 로드되어야 합니다.
+
+서버 사이드 프로그램이 필요한 기능이 발견되면 무조건 구현 불가라고 하지 말고,
+
+* 브라우저 LocalStorage / IndexedDB
+* 정적 JSON
+* GitHub API
+* 공개 API
+* 외부 Serverless API
+
+등 GitHub Pages에 적합한 대안을 검토하세요.
+
+단, API Key나 비밀번호 같은 민감한 값을 프론트엔드 코드에 직접 포함하지 마세요.
+
+---
+
+# 3. 완성도 높은 UI/UX
+
+단순 개발자용 샘플 페이지처럼 만들지 마세요.
+
+실제 서비스처럼 보이도록 다음을 적용하세요.
+
+* 명확한 정보 계층
+* 일관된 디자인 시스템
+* 적절한 여백
+* 현대적인 Typography
+* 카드 / 패널 / 버튼 디자인
+* Hover 효과
+* Focus 상태
+* Active 상태
+* Loading 상태
+* Empty 상태
+* Error 상태
+* Success 상태
+* Tooltip
+* Toast / Notification
+* Modal / Dialog
+* Dropdown
+* 모바일 Navigation
+* 필요한 경우 Search / Filter / Sort
+* 자연스러운 Transition / Animation
+
+과도한 애니메이션은 피하고 사용성을 우선하세요.
+
+---
+
+# 4. 반응형 웹
+
+다음 환경을 모두 고려하세요.
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
+
+특히 다음 너비에서 확인하세요.
+
+* 320px
+* 375px
+* 430px
+* 768px
+* 1024px
+* 1440px 이상
+
+화면이 좁아져도
+
+* 글자가 잘리지 않고
+* 메뉴가 겹치지 않고
+* 버튼이 화면 밖으로 나가지 않고
+* 표와 카드가 깨지지 않고
+* 가로 스크롤이 불필요하게 발생하지 않도록
+
+설계하세요.
+
+---
+
+# 5. 사이트 기본 메타 정보 완성
+
+`<head>`를 대충 만들지 말고 실제 서비스 배포 수준으로 구성하세요.
+
+필요한 항목:
+
+* `<title>`
+* meta description
+* viewport
+* theme-color
+* canonical URL 적용 가능 구조
+* favicon
+* SVG favicon
+* PNG favicon
+* Apple Touch Icon
+
+또한 필요하면 다음 크기의 아이콘도 준비하세요.
+
+* favicon.svg
+* favicon.ico 또는 PNG 대체
+* 16×16
+* 32×32
+* 180×180 Apple Touch Icon
+* 192×192
+* 512×512
+
+서비스 성격에 어울리는 **간단하면서 식별성이 좋은 즐겨찾기 아이콘(Favicon)**을 직접 디자인하세요.
+
+외부 저작권 이미지를 임의로 가져오지 말고 가능하면 SVG 기반으로 직접 제작하세요.
+
+---
+
+# 6. SNS / 링크 공유용 미리보기
+
+사이트 URL을 카카오톡, Discord, Slack, Facebook, X 등의 서비스에서 공유했을 때 자연스럽게 표시되도록 Social Preview 메타데이터를 구성하세요.
+
+포함:
+
+## Open Graph
+
+* `og:title`
+* `og:description`
+* `og:type`
+* `og:url`
+* `og:image`
+* `og:site_name`
+
+## Twitter/X Card
+
+* `twitter:card`
+* `twitter:title`
+* `twitter:description`
+* `twitter:image`
+
+그리고 실제 서비스 내용을 반영한 **OG Preview 이미지**도 생성할 수 있도록 구성하세요.
+
+권장 크기:
+
+`1200 × 630`
+
+이미지에는 필요한 경우 다음을 포함하세요.
+
+* 서비스 로고
+* 서비스명
+* 핵심 설명 한 줄
+* 대표 UI
+* 심플한 배경
+
+단순 임시 placeholder가 아니라 실제 서비스의 Social Preview로 사용할 수 있는 형태로 만드세요.
+
+---
+
+# 7. PWA 관련 기본 구성
+
+서비스 성격상 적절하다면 다음도 구성하세요.
+
+`manifest.webmanifest`
+
+포함 항목:
+
+* name
+* short_name
+* description
+* start_url
+* display
+* background_color
+* theme_color
+* icons
+
+필요한 경우 모바일에서 **홈 화면에 추가**했을 때 앱처럼 보이도록 구성하세요.
+
+단, PWA가 필요하지 않은 프로젝트라면 불필요하게 과도한 Service Worker를 추가하지 않아도 됩니다.
+
+---
+
+# 8. SEO
+
+정적 웹사이트에서도 검색엔진이 내용을 이해할 수 있도록 구성하세요.
+
+필요하면 다음 파일을 생성하세요.
+
+* `robots.txt`
+* `sitemap.xml`
+
+페이지 내용에 적합하다면 Schema.org 기반 JSON-LD도 적용하세요.
+
+예:
+
+* WebSite
+* WebApplication
+* Organization
+* SoftwareApplication
+* FAQPage
+* Article
+
+실제 페이지 성격에 맞는 Schema만 사용하세요.
+
+---
+
+# 9. 접근성
+
+WCAG의 기본 원칙을 고려하세요.
+
+반드시 확인:
+
+* semantic HTML
+* label 연결
+* alt text
+* ARIA 필요 여부
+* 키보드 조작
+* Tab navigation
+* focus-visible
+* 충분한 색상 대비
+* 클릭 가능한 영역 크기
+* 스크린리더 대응
+
+단순히 모든 요소에 ARIA를 남발하지 말고 semantic HTML을 우선하세요.
+
+---
+
+# 10. 성능 최적화
+
+GitHub Pages에서도 빠르게 로딩되도록 최적화하세요.
+
+확인 항목:
+
+* 불필요한 라이브러리 제거
+* JavaScript 번들 최소화
+* 이미지 최적화
+* SVG 적극 활용
+* 적절한 lazy loading
+* font loading 최적화
+* Layout Shift 방지
+* 불필요한 re-render 제거
+* 모바일 성능 고려
+
+가능하면 Lighthouse 기준으로 높은 품질을 목표로 하세요.
+
+특히:
+
+* Performance
+* Accessibility
+* Best Practices
+* SEO
+
+를 고려하세요.
+
+---
+
+# 11. 브라우저 저장 기능
+
+서버가 없어도 필요한 데이터를 유지할 수 있는 서비스라면 다음을 적절하게 사용하세요.
+
+* LocalStorage
+* SessionStorage
+* IndexedDB
+
+예:
+
+* 사용자 설정
+* 최근 사용 기록
+* 즐겨찾기
+* 테마
+* 입력 내용
+* 검색 기록
+
+브라우저 새로고침 후에도 필요한 정보가 유지되도록 하세요.
+
+---
+
+# 12. 다크모드
+
+디자인에 적합하다면 다음을 지원하세요.
+
+* Light Mode
+* Dark Mode
+* System Theme
+
+사용자가 선택한 테마는 LocalStorage 등에 저장하여 재방문 시 유지하세요.
+
+---
+
+# 13. URL / 라우팅
+
+SPA를 사용하는 경우 GitHub Pages 특성 때문에 직접 URL 접근 시 404가 발생하지 않도록 설계하세요.
+
+필요에 따라:
+
+* HashRouter
+* GitHub Pages용 SPA fallback
+* `404.html`
+
+등을 적절하게 사용하세요.
+
+프로젝트 성격에 따라 가장 안정적인 방법을 선택하세요.
+
+---
+
+# 14. GitHub Pages 배포 구성
+
+배포 방법까지 완성하세요.
+
+가능하면 **GitHub Actions 자동 배포**를 적용하세요.
+
+예:
+
+`.github/workflows/deploy.yml`
+
+다음 흐름을 지원하세요.
+
+`git push → GitHub Actions build → GitHub Pages 자동 배포`
+
+필요한 경우 다음 설정도 포함하세요.
+
+* Pages permissions
+* artifact upload
+* deploy-pages
+* Node 버전
+* npm ci
+* npm run build
+
+그리고 사용자가 GitHub Repository만 만들어 올리면 배포할 수 있도록 README에서 방법을 설명하세요.
+
+---
+
+# 15. GitHub Pages 정적 파일 처리
+
+필요하면 프로젝트 구조에:
+
+`.nojekyll`
+
+을 포함하여 GitHub Pages의 Jekyll 처리 때문에 `_assets` 등의 경로가 잘못 처리되는 문제를 방지하세요.
+
+사용하는 프레임워크와 구조에 따라 필요한 경우에만 적용하세요.
+
+---
+
+# 16. 커스텀 도메인 대비
+
+향후 다음과 같은 도메인을 연결할 수 있도록 구조를 고려하세요.
+
+`example.com`
+
+필요하면:
+
+`CNAME`
+
+파일 사용 방법도 README에 설명하세요.
+
+HTTPS 및 GitHub Pages Custom Domain 설정 시 주의할 점도 간단하게 안내하세요.
+
+---
+
+# 17. 404 페이지
+
+기본 GitHub 404 화면 대신 서비스 디자인과 통일된 `404.html`을 만들어주세요.
+
+포함:
+
+* 페이지를 찾을 수 없다는 안내
+* 홈으로 이동
+* 이전 페이지 이동
+* 검색 기능이 있다면 검색 버튼
+
+---
+
+# 18. 오류 및 예외 처리
+
+정상 상황만 구현하지 마세요.
+
+다음 상황도 처리하세요.
+
+* 데이터 없음
+* API 실패
+* 이미지 로딩 실패
+* 잘못된 URL
+* 잘못된 입력
+* 네트워크 오류
+* 권한 오류
+* 검색 결과 없음
+
+사용자가 무엇을 해야 하는지 알 수 있는 안내 메시지를 표시하세요.
+
+---
+
+# 19. 실제 콘텐츠 작성
+
+페이지를 Lorem Ipsum이나 의미 없는 샘플 문구로 채우지 마세요.
+
+첨부 자료를 분석하여 실제 서비스 성격에 맞는:
+
+* 사이트 이름
+* Hero 문구
+* 서비스 소개
+* 버튼 문구
+* 메뉴
+* 기능 설명
+* 카드 제목
+* FAQ
+* Footer
+
+등을 작성하세요.
+
+원본에서 서비스명이 명확하지 않다면 적절한 임시 서비스명을 제안해서 사용하되, 이후 쉽게 변경할 수 있도록 관리하세요.
+
+---
+
+# 20. 미리보기용 완성 페이지
+
+첫 실행부터 서비스의 목적을 바로 확인할 수 있어야 합니다.
+
+첫 화면에서 최소한 다음이 보여야 합니다.
+
+* 서비스명 / 로고
+* 핵심 기능
+* 실제 데이터 또는 예시 데이터
+* 주요 CTA
+* 실제 작동하는 인터랙션
+
+즉, 코드를 실행했는데 빈 화면 또는 개발용 샘플 화면이 나타나면 안 됩니다.
+
+---
+
+# 21. GitHub Repository Social Preview
+
+GitHub Repository에서도 프로젝트가 완성도 있게 보이도록 **Repository Social Preview에 사용할 이미지**도 고려해주세요.
+
+권장 이미지:
+
+`1280 × 640`
+
+OG 이미지와 함께 재사용할 수 있다면 재사용하되 비율이 크게 어색하지 않도록 제작하세요.
+
+---
+
+# 22. README.md
+
+README도 실제 공개 프로젝트 수준으로 작성하세요.
+
+포함:
+
+# 프로젝트 이름
+
+간단한 설명
+
+## Preview
+
+완성 페이지의 주요 화면 설명
+
+## Features
+
+핵심 기능
+
+## Tech Stack
+
+사용 기술
+
+## Project Structure
+
+주요 파일 구조
+
+## Local Development
+
+실행 방법
+
+## Build
+
+빌드 방법
+
+## GitHub Pages Deployment
+
+배포 방법
+
+## Configuration
+
+수정할 수 있는 설정
+
+## Custom Domain
+
+필요한 경우
+
+## License
+
+프로젝트 특성에 적합한 라이선스 안내
+
+---
+
+# 23. 프로젝트 구조
+
+프로젝트 규모에 맞게 유지보수가 쉬운 구조로 만드세요.
+
+예:
+
+```text
+/
+├─ public/
+│  ├─ favicon.svg
+│  ├─ favicon-32x32.png
+│  ├─ apple-touch-icon.png
+│  ├─ icon-192.png
+│  ├─ icon-512.png
+│  ├─ og-image.png
+│  ├─ manifest.webmanifest
+│  ├─ robots.txt
+│  └─ 404.html
+│
+├─ src/
+│  ├─ assets/
+│  ├─ components/
+│  ├─ pages/
+│  ├─ data/
+│  ├─ hooks/
+│  ├─ utils/
+│  ├─ styles/
+│  ├─ App.*
+│  └─ main.*
+│
+├─ .github/
+│  └─ workflows/
+│     └─ deploy.yml
+│
+├─ .nojekyll
+├─ index.html
+├─ package.json
+├─ README.md
+└─ vite.config.*
+```
+
+프로젝트가 단순하다면 억지로 구조를 복잡하게 만들지 마세요.
+
+---
+
+# 24. 코드 품질
+
+다음 원칙을 지키세요.
+
+* 중복 코드 최소화
+* Component 재사용
+* 의미 있는 함수명
+* 의미 있는 변수명
+* CSS 구조화
+* 하드코딩 최소화
+* 설정값 분리
+* 데이터와 UI 분리
+* 불필요한 주석 제거
+* Console Error 0개 목표
+* dead code 제거
+
+TypeScript를 사용한다면 가능한 범위에서 `any` 사용을 피하세요.
+
+---
+
+# 25. 디자인 토큰
+
+가능하면 주요 디자인 값을 한곳에서 관리하세요.
+
+예:
+
+```css
+:root {
+  --color-primary: ...;
+  --color-background: ...;
+  --color-surface: ...;
+  --color-text: ...;
+  --color-muted: ...;
+
+  --radius-sm: ...;
+  --radius-md: ...;
+  --radius-lg: ...;
+
+  --shadow-sm: ...;
+  --shadow-md: ...;
+
+  --space-1: ...;
+  --space-2: ...;
+}
+```
+
+첨부 자료에 브랜드 컬러가 있다면 그것을 우선 반영하세요.
+
+---
+
+# 26. 디자인 재현과 개선 원칙
+
+첨부한 웹사이트/스크린샷이 기준인 경우:
+
+1. Layout 파악
+2. Typography 파악
+3. Color system 파악
+4. Component 파악
+5. Responsive behavior 추론
+6. 사용자 흐름 분석
+7. 웹서비스로 재구현
+
+순서로 진행하세요.
+
+하지만 원본에 다음 문제가 있다면 개선하세요.
+
+* 너무 작은 글씨
+* 모바일에서 깨지는 레이아웃
+* 지나치게 작은 버튼
+* 낮은 색상 대비
+* 정보 계층 부족
+* 복잡한 메뉴
+* 불명확한 CTA
+* 지나친 여백
+* 부족한 여백
+
+---
+
+# 27. 기능 검증
+
+구현 후 실제 사용자가 조작한다고 생각하고 다음을 점검하세요.
+
+* 모든 버튼
+* 모든 링크
+* 메뉴
+* 모바일 메뉴
+* 입력폼
+* 검색
+* 필터
+* 정렬
+* Modal
+* Dropdown
+* 즐겨찾기
+* LocalStorage
+* 테마 변경
+* 새로고침
+* 뒤로가기
+* 직접 URL 접근
+* 404
+* 이미지
+* favicon
+* OG metadata
+
+단순히 UI만 만들어 놓고 버튼이 아무 일도 하지 않는 상태로 끝내지 마세요.
+
+---
+
+# 28. 배포 후 URL 환경까지 고려
+
+로컬 환경에서만 작동하면 안 됩니다.
+
+반드시 다음 두 환경을 모두 고려하세요.
+
+```text
+http://localhost:5173/
+```
+
+및
+
+```text
+https://USERNAME.github.io/REPOSITORY/
+```
+
+GitHub Pages 하위 경로 배포에서도 asset URL이 깨지지 않아야 합니다.
+
+---
+
+# 29. 외부 라이브러리
+
+라이브러리를 사용하기 전에 정말 필요한지 판단하세요.
+
+필요할 경우:
+
+* React
+* Vite
+* Lucide Icons
+* 적절한 UI library
+* Chart library
+
+등을 선택할 수 있습니다.
+
+단, 단순한 기능을 구현하기 위해 지나치게 많은 dependency를 추가하지 마세요.
+
+아이콘은 가능하면 한 가지 아이콘 시스템으로 통일하세요.
+
+---
+
+# 30. 보안
+
+다음을 절대 소스에 직접 넣지 마세요.
+
+* API Secret
+* Private Key
+* Password
+* Access Token
+* Personal Credential
+
+GitHub Pages는 공개 프론트엔드 환경이라는 점을 항상 고려하세요.
+
+외부 API에서 인증 정보가 반드시 필요하다면 별도 백엔드/Serverless Proxy가 필요하다는 점을 설명하세요.
+
+---
+
+# 31. 마지막 검수
+
+완료라고 하기 전에 프로젝트 전체를 다시 검토하세요.
+
+## Build
+
+```bash
+npm install
+npm run build
+```
+
+또는 프로젝트에 맞는 명령이 오류 없이 동작해야 합니다.
+
+## 확인 사항
+
+* Broken import 없음
+* Missing asset 없음
+* 404 asset 없음
+* favicon 정상
+* 페이지 title 정상
+* OG tags 정상
+* 모바일 레이아웃 정상
+* Desktop 정상
+* GitHub Pages 경로 정상
+* 새로고침 정상
+* 내부 링크 정상
+* README 정상
+* GitHub Actions 정상
+
+문제가 발견되면 완료라고 보고하기 전에 직접 수정하세요.
+
+---
+
+# 32. 결과 보고 방식
+
+작업 완료 후 단순히
+
+> 완료했습니다.
+
+라고만 하지 말고 아래 내용을 정리하세요.
+
+### 구현한 서비스
+
+서비스 목적과 구조
+
+### 주요 기능
+
+구현된 기능 목록
+
+### 디자인
+
+적용한 디자인 방향
+
+### 추가 생성 자산
+
+* favicon
+* app icon
+* apple-touch-icon
+* OG image
+* Social Preview
+* manifest
+
+### GitHub Pages
+
+적용한 배포 구조
+
+### 주요 파일
+
+핵심 파일 설명
+
+### 실행 방법
+
+```bash
+npm install
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### GitHub Pages 배포 방법
+
+Repository 설정까지 단계별로 설명
+
+### 추가 개선 가능 사항
+
+현재 GitHub Pages 구조에서 이후 확장할 수 있는 기능
+
+---
+
+# 가장 중요한 최종 요구사항
+
+**분석이나 예제 코드만 제공하고 끝내지 말고 실제 실행 가능한 전체 프로젝트를 완성하세요.**
+
+첨부 자료를 충분히 분석한 후 필요한 파일을 직접 생성·수정하세요.
+
+단순 mockup이 아니라 실제 조작 가능한 웹서비스를 만드세요.
+
+디자인뿐 아니라 기능도 작동해야 합니다.
+
+GitHub Pages에 배포했을 때 오류가 없도록 만들어야 합니다.
+
+특별한 이유가 없다면 TODO, 빈 버튼, 임시 placeholder, 미완성 기능을 남기지 마세요.
+
+그리고 최종적으로 사용자가 다음 주소만 다른 사람에게 전달해도 서비스를 사용할 수 있는 상태를 목표로 하세요.
+
+```text
+https://USERNAME.github.io/REPOSITORY/
+```
+
+---
+
+# 이번 작업의 입력 자료
+
+아래의 첨부 파일 및 링크를 기준으로 작업하세요.
+
+**첨부 파일**
+[여기에 파일 첨부]
+
+**참고 소스 / 기존 서비스**
+[여기에 URL 입력]
+
+**GitHub Repository**
+[있다면 URL 입력]
+
+**추가 요구사항**
+[원하는 기능이나 디자인이 있으면 입력]
+
+자료에서 확인 가능한 내용은 먼저 스스로 분석해서 결정하고, **구현을 진행하는 데 반드시 필요한 정보가 아니면 질문 때문에 작업을 중단하지 마세요.**
+
+------------------------------------------------------...
+
+# 웹서비스 구축 시 활용 가능한 기술 및 아키텍처 옵션
+
+아래 항목들은 모든 프로젝트에 반드시 적용하는 필수 기술이 아니다.
+
+웹서비스의 목적, 데이터 특성, 보안 수준, 사용자 수, 실시간성, 관리 방식 등을 분석한 후 **필요한 기술만 선택적으로 조합하여 사용한다.**
+
+단순한 웹페이지에 불필요한 데이터베이스, 인증 서버, 백엔드 등을 추가하지 말고, 정적 구조로 충분한 경우에는 가장 단순한 구조를 우선한다.
+
+반대로 데이터 저장, 관리, 권한 제어, 비공개 처리, 관리자 기능 등이 필요한 경우에는 아래 기술들을 검토하여 서비스 완성도를 높인다.
+
+---
+
+# 1. Static Web Architecture
+
+### 정적 웹 아키텍처
+
+HTML / CSS / JavaScript만으로 동작하는 정적 웹서비스.
+
+적합한 경우:
+
+* 계산기
+* 변환기
+* 정보 페이지
+* 소개 페이지
+* 시뮬레이터
+* 단순 검색
+* 로컬 데이터 기반 도구
+* 별도 서버가 필요 없는 서비스
+
+가능하면 GitHub Pages를 배포 환경으로 활용할 수 있다.
+
+---
+
+# 2. Static Data Source
+
+### 정적 데이터 소스
+
+DB가 필요하지 않지만 일정한 데이터가 필요한 경우 다음과 같은 정적 파일을 데이터 소스로 사용할 수 있다.
+
+* JSON
+* CSV
+* YAML
+* JavaScript Object
+* Markdown
+* XML
+
+예:
+
+```text
+/data/products.json
+/data/config.json
+/data/schedule.json
+```
+
+이는 **Static Data Store / File-based Data Store** 형태로 사용할 수 있다.
+
+---
+
+# 3. File-based Data Store
+
+### 파일 기반 데이터 저장소
+
+별도의 DBMS를 사용하지 않고 파일 자체를 데이터 저장소로 사용하는 방식.
+
+예:
+
+```text
+JSON
+CSV
+YAML
+SQLite File
+Markdown
+```
+
+소규모 또는 업데이트 빈도가 낮은 서비스에서는 관계형 DB보다 우선 검토할 수 있다.
+
+---
+
+# 4. Git-backed Data Store
+
+### Git 기반 데이터 저장소
+
+Git Repository 자체를 데이터 저장소 및 버전 관리 시스템으로 활용하는 방식.
+
+특징:
+
+```text
+Data File
+   ↓
+Git Commit
+   ↓
+Version History
+   ↓
+변경 추적 / 복원
+```
+
+사용 가능한 구성:
+
+* Public Repository
+* Private Repository
+* Git History
+* Commit
+* Branch
+* Pull Request
+
+데이터 변경 이력을 자동으로 보존해야 하는 프로젝트에 활용 가능하다.
+
+---
+
+# 5. Private Repository as Data Store
+
+### Private Repository 기반 비공개 데이터 저장
+
+공개 GitHub Pages와 데이터 저장 영역을 분리할 필요가 있는 경우:
+
+```text
+Public Repository
+→ Frontend / GitHub Pages
+
+Private Repository
+→ 원본 데이터 / 관리 데이터
+```
+
+형태를 사용할 수 있다.
+
+Private Repository 내부의 데이터를 브라우저에서 직접 조회하는 방식은 피하고, 빌드 또는 자동화 과정에서 필요한 데이터만 가공하여 공개 영역으로 전달한다.
+
+---
+
+# 6. Public / Private Data Separation
+
+### 공개·비공개 데이터 분리
+
+하나의 원본 데이터에서 공개 가능한 항목과 내부 항목을 분리한다.
+
+전문적으로는 다음 개념을 적용할 수 있다.
+
+**Data Projection**
+
+**Field-level Filtering**
+
+**Public Data Projection**
+
+예:
+
+```text
+Private Source Data
+        ↓
+Field Filtering
+        ↓
+Public Projection
+        ↓
+Frontend
+```
+
+원본:
+
+```json
+{
+  "name": "상품A",
+  "price": 10000,
+  "cost": 6000,
+  "supplier": "ABC"
+}
+```
+
+공개:
+
+```json
+{
+  "name": "상품A",
+  "price": 10000
+}
+```
+
+---
+
+# 7. Client-side Persistence
+
+### 클라이언트 측 영속 저장
+
+데이터가 서버에 저장될 필요 없이 사용자 자신의 브라우저에만 저장되어도 되는 경우 사용한다.
+
+선택 가능한 기술:
+
+### LocalStorage
+
+간단한 설정 및 소량 데이터.
+
+### SessionStorage
+
+브라우저 세션 동안만 필요한 데이터.
+
+### IndexedDB
+
+구조화된 데이터, 대용량 데이터, 오프라인 데이터.
+
+### Cache Storage
+
+PWA 및 오프라인 리소스 캐싱.
+
+---
+
+# 8. Local-first Architecture
+
+### 로컬 우선 아키텍처
+
+사용자 데이터가 중앙 서버보다 사용자의 기기에 우선 저장되는 구조.
+
+예:
+
+```text
+Application
+    ↓
+IndexedDB
+    ↓
+Local Data
+```
+
+필요한 경우 추후 동기화 기능을 별도로 추가할 수 있다.
+
+개인 도구, 오프라인 도구, 개인정보를 외부에 저장할 필요가 없는 서비스에서 검토한다.
+
+---
+
+# 9. Offline-first Architecture
+
+### 오프라인 우선 아키텍처
+
+인터넷 연결이 없어도 핵심 기능이 동작하도록 설계한다.
+
+사용 가능 기술:
+
+* Service Worker
+* Cache Storage
+* IndexedDB
+* PWA
+* LocalStorage
+
+---
+
+# 10. Data Import / Export
+
+### 데이터 가져오기·내보내기
+
+서버 저장소가 없어도 사용자가 데이터를 직접 백업하고 복원할 수 있도록 한다.
+
+지원 가능한 형식:
+
+* JSON Import / Export
+* CSV Import / Export
+* Excel Export
+* HTML Export
+* PDF Export
+* Backup File
+* Restore File
+
+예:
+
+```text
+사용자 데이터
+   ↓
+Export
+   ↓
+backup.json
+
+backup.json
+   ↓
+Import
+   ↓
+데이터 복원
+```
+
+---
+
+# 11. URL State
+
+### URL 기반 상태 저장
+
+간단한 설정이나 결과를 별도 DB 없이 URL에 저장하고 공유할 수 있다.
+
+기술:
+
+* Query Parameters
+* URL Hash
+* Encoded URL State
+* Shareable State
+
+예:
+
+```text
+?type=40HQ&width=2350&height=2690
+```
+
+계산기, 견적기, 필터 설정, 결과 공유 등에 활용한다.
+
+---
+
+# 12. Client-side Encryption
+
+### 클라이언트 측 암호화
+
+저장 데이터 자체를 사람이 직접 읽을 수 없도록 해야 하는 경우 사용한다.
+
+검토 기술:
+
+* Web Crypto API
+* AES-GCM
+* PBKDF2
+* Encrypted JSON
+* Encrypted IndexedDB
+* Encrypted File Storage
+
+구조:
+
+```text
+Plain Data
+   ↓
+Encryption
+   ↓
+Ciphertext
+```
+
+암호화 키를 JavaScript 소스에 하드코딩하지 않는다.
+
+---
+
+# 13. Encrypted Static Data
+
+### 암호화된 정적 데이터
+
+정적 웹서비스에서 공개 저장 위치를 사용해야 하지만 원문 노출을 방지해야 하는 경우:
+
+```text
+data.json
+   ↓
+Encryption
+   ↓
+data.enc
+```
+
+형태를 검토한다.
+
+사용자가 직접 제공한 암호 또는 별도의 안전한 키 관리 방식으로 복호화할 수 있다.
+
+---
+
+# 14. One-way Hashing
+
+### 단방향 해싱
+
+원본 값을 저장하거나 공개할 필요 없이 **일치 여부만 확인**해야 하는 경우 사용한다.
+
+기술:
+
+* SHA-256
+* HMAC
+* Password Hash
+* Salted Hash
+
+활용:
+
+```text
+사용자 입력
+   ↓
+Hash
+   ↓
+Stored Hash와 비교
+   ↓
+Match / No Match
+```
+
+제품 코드 확인, 중복 확인, 비밀번호 검증 등의 용도로 사용할 수 있다.
+
+단, 쉽게 추측할 수 있는 값에 단순 SHA-256만 사용하는 것을 보안 수단으로 간주하지 않는다.
+
+---
+
+# 15. Public-key Encryption
+
+### 공개키 암호화
+
+사용자는 데이터를 암호화하여 제출할 수 있지만, 복호화 권한은 관리자에게만 있어야 하는 경우 검토한다.
+
+개념:
+
+```text
+Public Key
+→ Encryption 가능
+
+Private Key
+→ Decryption 가능
+```
+
+활용 예:
+
+* 익명 제보
+* 비공개 문의
+* 관리자 전용 열람 자료
+* 민감한 사용자 제출
+
+이를 **Write-only Encryption Pattern** 형태로 활용할 수 있다.
+
+---
+
+# 16. Write-only Submission Pattern
+
+### 쓰기 전용 제출 구조
+
+사용자는 데이터를 작성할 수 있지만 다른 사람이 해당 데이터를 읽을 수 없어야 하는 구조.
+
+개념적으로:
+
+```text
+CREATE / SUBMIT
+✅
+
+READ
+❌
+
+UPDATE
+필요에 따라 제한
+
+DELETE
+필요에 따라 제한
+```
+
+외부 Backend가 없는 경우 Public-key Encryption, GitHub Issue 기반 Workflow 등으로 유사 구조를 설계할 수 있다.
+
+---
+
+# 17. Append-only Data Model
+
+### 추가 전용 데이터 모델
+
+기존 데이터를 수정하기보다 새로운 기록을 계속 추가하는 방식.
+
+예:
+
+```text
+Record #1
+Record #2
+Record #3
+Record #4
+```
+
+적합한 분야:
+
+* 로그
+* 신청 기록
+* 변경 기록
+* 작업 이력
+* 감사 기록
+* 이벤트 기록
+
+Git Commit 또는 GitHub Issues와 잘 결합할 수 있다.
+
+---
+
+# 18. Immutable / Tamper-evident History
+
+### 변경 이력 추적 구조
+
+데이터가 언제 누가 어떻게 바뀌었는지 추적할 필요가 있다면 Git History를 활용할 수 있다.
+
+관련 개념:
+
+* Version Control
+* Audit Trail
+* Revision History
+* Change Log
+* Tamper-evident History
+
+---
+
+# 19. GitHub Issues as Structured Input
+
+### GitHub Issues 기반 구조화 데이터 입력
+
+GitHub Issues를 단순 문의 기능이 아니라 관리자 또는 사용자의 입력 인터페이스로 활용할 수 있다.
+
+특히:
+
+**GitHub Issue Forms**
+
+를 사용하면 구조화된 입력 화면을 구성할 수 있다.
+
+예:
+
+```text
+New Issue
+
+제품명
+[________]
+
+날짜
+[________]
+
+종류
+[▼]
+
+설명
+[________________]
+```
+
+---
+
+# 20. GitHub Issues as Lightweight CMS
+
+### GitHub Issues를 경량 CMS처럼 활용
+
+콘텐츠 등록 및 관리가 주 목적이라면 Issues를 간단한 CMS(Content Management System)처럼 사용할 수 있다.
+
+예:
+
+* 공지사항
+* 일정
+* FAQ
+* 게시물
+* 제품 정보
+* 변경 요청
+* 콘텐츠 등록
+
+GitHub Actions와 결합하여 실제 데이터 파일로 변환할 수 있다.
+
+---
+
+# 21. GitHub-native Admin Interface
+
+### GitHub 자체 관리자 인터페이스
+
+별도의 관리자 웹페이지를 개발할 필요가 없는 경우 GitHub 자체 UI를 관리자 환경으로 활용할 수 있다.
+
+사용 가능한 기능:
+
+* Repository Permissions
+* Issues
+* Issue Forms
+* Labels
+* Projects
+* Pull Requests
+* Actions
+
+즉:
+
+```text
+GitHub Login
++
+Private Repository
++
+Issues
++
+Actions
+```
+
+를 하나의 간단한 Admin System처럼 활용할 수 있다.
+
+---
+
+# 22. Event-driven Automation
+
+### 이벤트 기반 자동화
+
+특정 이벤트 발생 시 후속 작업을 자동으로 실행한다.
+
+GitHub에서는 **GitHub Actions**를 활용한다.
+
+Trigger 예:
+
+* Issue Created
+* Issue Edited
+* Label Added
+* Push
+* Pull Request
+* Manual Dispatch
+* Scheduled Event
+
+구조:
+
+```text
+Event
+ ↓
+GitHub Actions
+ ↓
+Validation
+ ↓
+Processing
+ ↓
+Data Update
+ ↓
+Deployment
+```
+
+---
+
+# 23. Workflow Automation
+
+### 워크플로 자동화
+
+데이터 등록·승인·수정·배포를 자동화할 필요가 있다면:
+
+```text
+Requested
+ ↓
+Review
+ ↓
+Approved
+ ↓
+Processed
+ ↓
+Published
+```
+
+형태의 Workflow를 구현할 수 있다.
+
+GitHub Issues + Labels + Actions를 조합할 수 있다.
+
+---
+
+# 24. Approval Workflow
+
+### 승인 워크플로
+
+중요한 데이터가 즉시 반영되면 안 되는 프로젝트에서는 승인 절차를 추가한다.
+
+예:
+
+```text
+New Request
+     ↓
+Pending
+     ↓
+Approved Label
+     ↓
+GitHub Action
+     ↓
+Publish
+```
+
+---
+
+# 25. GitHub Actions Secrets
+
+### 비밀정보 관리
+
+Token, 암호화 Key, 인증정보 등이 필요한 경우 공개 코드에 직접 기록하지 않는다.
+
+가능하면:
+
+**GitHub Actions Secrets**
+
+**Environment Secrets**
+
+등을 이용한다.
+
+금지:
+
+```text
+JavaScript에 PAT 삽입
+HTML에 비밀번호 삽입
+Public JSON에 Secret 삽입
+Repository 코드에 Encryption Key 하드코딩
+```
+
+---
+
+# 26. Build-time Data Processing
+
+### 빌드 시점 데이터 처리
+
+브라우저가 민감한 원본 데이터를 직접 처리하지 않고 GitHub Actions 등 빌드 과정에서 미리 처리한다.
+
+```text
+Private Source
+     ↓
+Build-time Processing
+     ↓
+Sanitization
+     ↓
+Transformation
+     ↓
+Public Artifact
+     ↓
+GitHub Pages
+```
+
+활용:
+
+* 비공개 필드 제거
+* 정렬
+* 통계 생성
+* 데이터 병합
+* 검색 인덱스 생성
+* HTML 생성
+* 공개 JSON 생성
+
+---
+
+# 27. Static Site Generation
+
+### 정적 사이트 생성
+
+관리 데이터나 Markdown/JSON 등을 기반으로 자동으로 HTML 페이지를 생성할 수 있다.
+
+개념:
+
+**Static Site Generation (SSG)**
+
+예:
+
+```text
+Markdown / JSON
+      ↓
+Build
+      ↓
+HTML
+      ↓
+GitHub Pages
+```
+
+---
+
+# 28. Precomputed Data
+
+### 사전 계산 데이터
+
+사용자 브라우저에서 매번 복잡한 연산을 수행할 필요가 없는 경우 사전에 결과를 계산하여 저장한다.
+
+예:
+
+```text
+Raw Data
+ ↓
+GitHub Actions
+ ↓
+Aggregation
+ ↓
+statistics.json
+```
+
+웹에서는 결과만 읽는다.
+
+---
+
+# 29. Search Index Generation
+
+### 정적 검색 인덱스
+
+서버 DB 검색이 필요하지 않은 사이트에서는 빌드 과정에서 검색용 인덱스를 미리 생성할 수 있다.
+
+예:
+
+```text
+Original Data
+     ↓
+Search Index Builder
+     ↓
+search-index.json
+     ↓
+Client-side Search
+```
+
+이를 통해 GitHub Pages만으로도 상당한 수준의 검색 기능을 구현할 수 있다.
+
+---
+
+# 30. Client-side Search
+
+### 클라이언트 측 검색
+
+데이터 규모가 크지 않으면 Backend 검색 API 대신 브라우저에서 검색할 수 있다.
+
+사용 가능한 구조:
+
+* JSON Search
+* In-memory Search
+* Search Index
+* Fuzzy Search
+* Full-text Search Library
+
+---
+
+# 31. Role-based Access Control
+
+### 역할 기반 접근 제어
+
+여러 관리자 또는 사용자가 존재하고 권한 차이가 필요한 경우:
+
+**RBAC — Role-Based Access Control**
+
+을 검토한다.
+
+예:
+
+```text
+Owner
+Admin
+Editor
+Viewer
+```
+
+GitHub 기반 관리 시스템에서는 Repository Permission 자체를 간단한 권한 체계로 활용할 수도 있다.
+
+---
+
+# 32. Least Privilege
+
+### 최소 권한 원칙
+
+모든 인증정보와 계정은 필요한 최소 권한만 가진다.
+
+예:
+
+```text
+Read only
+Write only
+Contents write
+Actions only
+Admin
+```
+
+필요 이상의 Repository 또는 Token 권한을 부여하지 않는다.
+
+---
+
+# 33. Audit Trail
+
+### 감사 로그
+
+중요한 데이터 변경은 누가, 언제, 무엇을 변경했는지 기록할 수 있도록 한다.
+
+활용 가능한 요소:
+
+* Git Commit
+* Git History
+* Issues
+* Action Logs
+* Change Log
+
+---
+
+# 34. Soft Delete
+
+### 논리 삭제
+
+중요 데이터는 즉시 완전히 삭제하기보다 삭제 상태만 기록하는 방식을 우선 검토한다.
+
+예:
+
+```json
+{
+  "deleted": true,
+  "deleted_at": "..."
+}
+```
+
+장점:
+
+* 복구 가능
+* 변경 추적 가능
+* 사고 방지
+
+---
+
+# 35. Data Validation
+
+### 데이터 검증
+
+사용자가 입력한 데이터를 그대로 저장하지 않는다.
+
+검토 항목:
+
+* Required Field Validation
+* Type Validation
+* Range Validation
+* Format Validation
+* Schema Validation
+* Sanitization
+
+GitHub Issue → Action 처리 구조에서도 Validation을 수행한다.
+
+---
+
+# 36. Schema-driven Data
+
+### 스키마 기반 데이터
+
+구조화된 데이터가 필요한 프로젝트는 먼저 데이터 Schema를 정의할 수 있다.
+
+예:
+
+```text
+id
+title
+category
+status
+created_at
+updated_at
+is_public
+```
+
+JSON Schema와 같은 방식을 사용할 수도 있다.
+
+---
+
+# 37. Configuration-driven Architecture
+
+### 설정 중심 구조
+
+프로젝트마다 코드를 대규모 수정하지 않고 설정 파일 변경으로 동작을 바꿀 수 있도록 설계한다.
+
+예:
+
+```text
+config.json
+schema.json
+permissions.json
+categories.json
+```
+
+다른 프로젝트에서 재사용성이 중요한 경우 적극 검토한다.
+
+---
+
+# 38. Feature Flag
+
+### 기능 플래그
+
+서비스 기능을 코드 삭제 없이 활성화/비활성화할 수 있다.
+
+예:
+
+```json
+{
+  "enableSearch": true,
+  "enableLogin": false,
+  "enableAdmin": true
+}
+```
+
+---
+
+# 39. Progressive Enhancement
+
+### 점진적 기능 확장
+
+처음부터 모든 기능을 구축하지 않는다.
+
+예:
+
+```text
+1단계
+Static HTML
+
+2단계
+JSON
+
+3단계
+LocalStorage
+
+4단계
+Git-backed Data
+
+5단계
+Automation
+
+6단계
+필요하면 Backend / DB
+```
+
+프로젝트 규모에 맞게 필요한 수준까지만 구현한다.
+
+---
+
+# 40. Backendless / Serverless-first Evaluation
+
+### 백엔드 없는 구조 우선 검토
+
+새 프로젝트를 설계할 때 바로 DB와 Backend를 추가하지 말고 다음 순서로 검토한다.
+
+```text
+정적 페이지로 가능한가?
+        ↓
+정적 JSON이면 가능한가?
+        ↓
+LocalStorage / IndexedDB면 가능한가?
+        ↓
+Git Repository로 가능한가?
+        ↓
+GitHub Actions 자동화로 가능한가?
+        ↓
+그래도 부족한가?
+        ↓
+그때 Backend / Database 검토
+```
+
+---
+
+# 41. GitHub-native Architecture
+
+### GitHub 기능 중심 아키텍처
+
+프로젝트 성격에 맞는 경우 다음 기능을 조합할 수 있다.
+
+```text
+GitHub Pages
+GitHub Repositories
+Private Repositories
+Issues
+Issue Forms
+Projects
+Labels
+Pull Requests
+GitHub Actions
+GitHub Secrets
+Git History
+Releases
+```
+
+필요하다고 판단될 경우 이들을 일반적인 Web Backend / CMS / Workflow / Data Store 일부의 대체 수단으로 사용할 수 있다.
+
+단, GitHub를 관계형 DB나 실시간 Backend인 것처럼 무리하게 사용하지 않는다.
+
+---
+
+# 42. Headless-style Content Architecture
+
+### 콘텐츠와 화면 분리
+
+관리되는 콘텐츠와 실제 사용자 화면을 분리한다.
+
+```text
+Content Source
+     ↓
+Processing
+     ↓
+Frontend
+```
+
+GitHub Issues, Markdown 또는 Private Repository를 Content Source로 사용할 수도 있다.
+
+이는 **Headless CMS와 유사한 패턴**으로 활용할 수 있다.
+
+---
+
+# 43. Read Model / Write Model Separation
+
+### 읽기 데이터와 쓰기 데이터 분리
+
+입력용 데이터 구조와 사용자에게 제공하는 데이터 구조가 같을 필요는 없다.
+
+```text
+WRITE MODEL
+관리자용 원본
+
+      ↓ Processing
+
+READ MODEL
+사용자용 가공 데이터
+```
+
+이는 **CQRS의 단순화된 개념**처럼 적용할 수 있다.
+
+GitHub 환경에서는:
+
+```text
+Private Repository
+= Write / Source Model
+
+Public JSON
+= Read Model
+```
+
+형태로 사용할 수 있다.
+
+---
+
+# 44. Derived Data / Materialized View
+
+### 파생 데이터 / 사전 생성 조회 데이터
+
+원본 데이터에서 특정 목적에 필요한 결과를 자동 생성한다.
+
+예:
+
+```text
+products.json
+orders.json
+schedule.json
+
+        ↓
+
+GitHub Actions
+
+        ↓
+
+dashboard-summary.json
+calendar-data.json
+public-products.json
+```
+
+DB의 **Materialized View와 유사한 효과**를 정적 파일로 구현할 수 있다.
+
+---
+
+# 45. Data Pipeline
+
+### 데이터 처리 파이프라인
+
+필요한 프로젝트에서는 다음과 같이 데이터 흐름을 명확하게 정의한다.
+
+```text
+Input
+ ↓
+Validation
+ ↓
+Transformation
+ ↓
+Storage
+ ↓
+Projection
+ ↓
+Build
+ ↓
+Deployment
+```
+
+각 단계는 반드시 필요한 경우에만 사용한다.
+
+---
+
+# 기술 선택 원칙
+
+프로젝트를 구현하기 전에 요구사항을 분석하고 다음 순서로 판단한다.
+
+### A. 데이터 저장이 필요한가?
+
+필요 없다면 저장 시스템을 추가하지 않는다.
+
+### B. 사용자 기기에만 저장하면 되는가?
+
+그렇다면:
+
+* LocalStorage
+* IndexedDB
+* Local-first Architecture
+
+중 적절한 것을 선택한다.
+
+### C. 정적 데이터만 필요한가?
+
+그렇다면:
+
+* JSON
+* CSV
+* YAML
+* Markdown
+* Static Data Source
+
+등을 사용한다.
+
+### D. GitHub에서 데이터와 변경 이력을 관리하면 충분한가?
+
+그렇다면:
+
+* Git-backed Data Store
+* Private Repository
+* Issues
+* Issue Forms
+* Actions
+
+등을 검토한다.
+
+### E. 공개 데이터와 원본 데이터를 분리해야 하는가?
+
+그렇다면:
+
+* Private/Public Separation
+* Data Projection
+* Build-time Processing
+
+을 사용한다.
+
+### F. 데이터를 사람이 읽지 못하게 해야 하는가?
+
+목적에 따라:
+
+* Encryption
+* Hashing
+* HMAC
+* Public-key Encryption
+
+중 적절한 것을 선택한다.
+
+### G. 실시간 서버 기능이 정말 필요한가?
+
+다음과 같은 요구가 있을 경우에만 Backend 또는 Database를 검토한다.
+
+* 다수 사용자 동시 데이터 변경
+* 실시간 동기화
+* 실시간 인증/권한 검증
+* Private 데이터의 동적 조회
+* 복잡한 관계형 Query
+* 고빈도 Transaction
+* 실시간 사용자별 데이터
+
+---
+
+# 구현 지침
+
+새로운 웹서비스를 제작할 때 위 기술을 모두 사용하는 것이 아니라 다음 원칙을 따른다.
+
+> **프로젝트 요구사항을 먼저 분석하고, 필요한 기능을 만족시키는 가장 단순하고 안전한 아키텍처를 선택한다.**
+
+필요한 경우 여러 기술을 조합할 수 있다.
+
+예:
+
+```text
+GitHub Pages
++
+Static JSON
++
+LocalStorage
+```
+
+또는:
+
+```text
+GitHub Pages
++
+Private Repository
++
+Issue Forms
++
+GitHub Actions
++
+Public Data Projection
+```
+
+또는:
+
+```text
+GitHub Pages
++
+IndexedDB
++
+Encrypted Export
+```
+
+또는:
+
+```text
+GitHub Pages
++
+Markdown
++
+Static Site Generation
++
+Client-side Search
+```
+
+등 프로젝트 목적에 따라 달리 구성한다.
+
+**DB 환경을 기본 전제로 삼지 않는다.**
+
+단순 웹서비스는 단순하게 유지하고, 데이터 관리나 보안 기능이 필요한 프로젝트에 한해서 위 기능을 선택적으로 추가하여 전체 서비스의 완성도를 높인다.
+
+
+
+
+---
+
+# 필요 시 사용할 수 있는 DB 없는 외부 저장·공유·재접근 구조
+
+웹서비스의 기능상 사용자가 작성한 데이터를 **저장, 공유, 다시 불러오기, 다른 기기에서 재사용**해야 하지만 별도의 외부 Database 또는 상시 Backend 서버를 운영하기 어려운 경우에는 다음과 같은 **GitHub 중심의 임시 저장·동기화 구조**를 선택적으로 검토한다.
+
+이 방식은 모든 프로젝트에 강제로 적용하지 않는다.
+
+다음과 같은 요구가 있을 때만 사용한다.
+
+* 사용자가 작성한 데이터를 브라우저를 닫은 이후에도 유지해야 하는 경우
+* 여러 기기에서 같은 데이터를 다시 불러와야 하는 경우
+* 저장한 결과를 URL 등으로 공유해야 하는 경우
+* 회원가입 없이 개인 기록을 다시 불러올 수 있어야 하는 경우
+* LocalStorage / IndexedDB만으로는 부족한 경우
+* 별도의 유료 DB 또는 상시 서버를 두고 싶지 않은 경우
+* 데이터 변경 빈도와 동시 사용량이 Git 기반 저장 방식으로 감당 가능한 경우
+
+## 임시 Queue + Git-backed Persistent Storage
+
+필요하다면 다음 구조를 활용할 수 있다.
+
+```text
+사용자
+   ↓
+GitHub Pages
+   ↓
+Google Apps Script
+   ↓
+Google Spreadsheet
+   ↓
+Temporary Queue / Staging
+   ↓
+GitHub Actions
+   ↓
+Validation / Transformation
+   ↓
+GitHub Repository
+   ↓
+JSON / Markdown / 기타 정적 데이터
+   ↓
+GitHub Pages
+```
+
+각 구성요소의 역할은 다음과 같이 구분한다.
+
+```text
+GitHub Pages
+= 사용자 UI / 데이터 조회
+
+Google Apps Script
+= 데이터 입력을 받는 경량 Write API
+
+Google Spreadsheet
+= 영구 DB가 아닌 임시 데이터 Queue
+
+GitHub Actions
+= 데이터 검증 / 이동 / 변환 / 인덱스 생성 / 배포
+
+GitHub Repository
+= 최종 영속 데이터 저장소
+
+JSON / Markdown 등
+= 실제 데이터 파일
+
+LocalStorage / IndexedDB
+= 익명 사용자 식별정보 및 로컬 상태 저장
+```
+
+## Spreadsheet는 최종 저장소로 사용하지 않는다
+
+Google Spreadsheet를 사용하는 경우 데이터를 계속 누적하는 DB처럼 사용하기보다 **GitHub Repository로 이동하기 전의 임시 체류 장소**로 사용하는 방식을 우선 검토한다.
+
+예:
+
+```text
+사용자 입력
+   ↓
+Spreadsheet Queue 저장
+   ↓
+GitHub Actions 실행
+   ↓
+GitHub Repository 저장
+   ↓
+저장 성공 검증
+   ↓
+Queue 데이터 제거
+```
+
+중요:
+
+**GitHub에 정상적으로 데이터가 저장되었다는 것이 확인되기 전에는 Spreadsheet의 원본 데이터를 삭제하지 않는다.**
+
+GitHub 저장 또는 Action 실행이 실패했다면 Queue 데이터는 그대로 유지하여 다음 처리에서 재시도할 수 있어야 한다.
+
+보다 안정적인 구조가 필요하다면 다음과 같은 상태를 사용할 수 있다.
+
+```text
+WAITING
+↓
+PROCESSING
+↓
+SYNCED
+```
+
+오류 발생 시:
+
+```text
+ERROR
+```
+
+상태로 남기고 재처리할 수 있다.
+
+정상 처리된 데이터는 일정 시간이 지난 후 Queue에서 자동 제거할 수 있다.
+
+## Queue 데이터 구조
+
+가능하면 게시물 하나마다 Spreadsheet Tab을 새로 만드는 방식보다 하나의 Queue Sheet에서 데이터 한 건을 한 Row로 관리하는 방식을 우선 검토한다.
+
+예:
+
+```text
+ID
+TYPE
+CREATED_AT
+UPDATED_AT
+OWNER_ID
+SOURCE
+PAYLOAD
+STATUS
+RETRY_COUNT
+```
+
+각 데이터에는 UUID 등의 고유 ID를 부여한다.
+
+이를 통해 동일 요청이 여러 번 전달되더라도 중복 저장을 방지한다.
+
+## 이벤트 기반 동기화
+
+가능하면 일정 시간마다 계속 Spreadsheet를 조회하는 Polling보다 **이벤트 기반 처리**를 우선 검토한다.
+
+예:
+
+```text
+사용자 저장
+↓
+Apps Script
+↓
+Spreadsheet Queue 기록
+↓
+GitHub repository_dispatch
+↓
+GitHub Actions 실행
+↓
+Repository 저장
+```
+
+필요하면 이벤트 전달 실패를 복구하기 위한 Scheduled Action을 추가할 수 있다.
+
+따라서 다음 형태를 사용할 수 있다.
+
+```text
+Event-driven Sync
++
+Scheduled Recovery
+```
+
+실시간성이 반드시 필요하지 않다면 복잡한 실시간 Backend를 별도로 구축하지 않는다.
+
+## GitHub Repository 데이터 구조
+
+최종 데이터는 프로젝트 성격에 따라 JSON, Markdown 등의 정적 파일로 저장할 수 있다.
+
+예:
+
+```text
+/data/
+├─ records/
+│  ├─ UUID-1.json
+│  ├─ UUID-2.json
+│  └─ UUID-3.json
+│
+├─ shared/
+│  └─ UUID-4.json
+│
+└─ index/
+   └─ records.json
+```
+
+파일 이름에는 사용자가 입력한 제목이나 쉽게 충돌할 수 있는 값보다 UUID 또는 충분히 긴 Random ID 사용을 우선한다.
+
+목록 조회가 필요한 경우 원본 파일 전체를 매번 읽지 말고 GitHub Actions에서 별도의 경량 index 파일을 생성할 수 있다.
+
+예:
+
+```text
+records.json
+search-index.json
+recent.json
+public-records.json
+```
+
+이는 Static Read Model 또는 Materialized View와 유사하게 활용할 수 있다.
+
+---
+
+# 회원가입 없는 저장 및 재접근
+
+서비스 특성상 반드시 회원가입이 필요한 것이 아니라면 **Anonymous Access 방식**을 검토한다.
+
+사용자가 처음 데이터를 저장할 때 다음과 같은 정보를 생성할 수 있다.
+
+```text
+Anonymous User ID
+Access Token
+Recovery Code
+```
+
+기본 흐름:
+
+```text
+최초 방문
+↓
+익명 사용자 ID 생성
+↓
+브라우저에 안전한 범위의 식별정보 저장
+↓
+데이터 저장
+↓
+해당 익명 사용자와 데이터 연결
+```
+
+같은 브라우저에서 다시 방문하면 LocalStorage 또는 IndexedDB 등에 저장된 익명 식별정보를 이용하여 이전 기록을 다시 연결할 수 있다.
+
+예:
+
+```text
+재방문
+↓
+Anonymous User ID 확인
+↓
+사용자가 저장했던 데이터 조회
+```
+
+## 다른 기기에서 다시 불러오기
+
+사용자가 다른 컴퓨터나 휴대전화에서 기존 데이터를 다시 불러와야 한다면 별도의 Recovery Code 또는 사용자가 지정한 복구 암호를 제공할 수 있다.
+
+예:
+
+```text
+기존 기록 불러오기
+↓
+Recovery Code 입력
+↓
+권한 확인
+↓
+기존 데이터 연결
+```
+
+복구 코드는 충분히 예측하기 어려운 Random 값으로 생성한다.
+
+사용자가 지정한 비밀번호 또는 복구 암호를 사용하는 경우 가능한 한 원문 그대로 저장하지 말고 적절한 Password Hash 방식을 검토한다.
+
+---
+
+# IP 주소 사용 원칙
+
+IP 주소만을 사용자의 영구 ID 또는 인증 수단으로 사용하지 않는다.
+
+IP는 다음 상황에서 쉽게 변경되거나 여러 사용자가 공유할 수 있다.
+
+```text
+Wi-Fi 변경
+모바일 네트워크 변경
+통신사 NAT
+공유기 재연결
+VPN
+회사 또는 학교 네트워크
+```
+
+따라서 IP 주소를 사용하는 경우에도 다음 목적의 **보조 신호** 정도로만 활용한다.
+
+* 비정상 요청 탐지
+* 요청 빈도 제한
+* 보조 로그
+* Abuse 방지
+
+실제 데이터 소유권 및 재접근 권한은 다음과 같은 값을 기준으로 설계한다.
+
+```text
+Anonymous User ID
++
+충분히 긴 Random Access Token
+```
+
+또는:
+
+```text
+Recovery Code
+```
+
+또는 필요한 경우:
+
+```text
+사용자 지정 복구 암호
+```
+
+---
+
+# 저장 데이터 공유
+
+사용자가 자신이 작성한 내용을 다른 사람에게 공유할 필요가 있다면 데이터마다 접근 상태를 구분할 수 있다.
+
+예:
+
+```text
+PRIVATE
+LINK
+PUBLIC
+```
+
+의미:
+
+```text
+PRIVATE
+= 소유자만 접근
+
+LINK
+= 공유 링크를 알고 있는 사용자 접근
+
+PUBLIC
+= 공개 데이터
+```
+
+공유 URL에는 순차적인 숫자 ID보다 충분히 예측하기 어려운 Share ID를 사용한다.
+
+예:
+
+```text
+/view/?share=RANDOM_SHARE_ID
+```
+
+공유가 해제되면 기존 Share ID로 접근하지 못하도록 처리한다.
+
+---
+
+# 데이터 수정 및 삭제
+
+사용자가 자신의 데이터를 수정하는 경우 데이터의 고유 ID는 유지하고 다음과 같은 메타데이터를 갱신할 수 있다.
+
+```text
+created_at
+updated_at
+version
+```
+
+예:
+
+```text
+version: 1
+↓
+수정
+↓
+version: 2
+```
+
+Git Repository를 사용한다면 Git History 자체를 변경 이력으로 활용할 수도 있다.
+
+삭제가 필요한 경우 즉시 물리 삭제보다 다음과 같은 Soft Delete를 먼저 검토할 수 있다.
+
+```json
+{
+  "status": "deleted",
+  "deleted_at": "..."
+}
+```
+
+단, Git Repository의 Git History에는 이전 내용이 남을 수 있다는 점을 반드시 고려한다.
+
+따라서 다음과 같은 민감 데이터는 이러한 Git-backed 구조에 저장하지 않는 것을 원칙으로 한다.
+
+* 금융정보
+* 비밀번호 원문
+* 인증 Secret
+* 민감 개인정보
+* 의료정보
+* 보안상 공개 저장소에 존재해서는 안 되는 데이터
+
+---
+
+# 저장 메타데이터
+
+저장 데이터에는 프로젝트에 필요한 범위에서 다음 메타데이터를 포함할 수 있다.
+
+```text
+id
+type
+created_at
+updated_at
+source
+owner_id
+storage_path
+access_type
+status
+version
+is_shared
+processed_at
+```
+
+예:
+
+```json
+{
+  "id": "UUID",
+  "type": "record",
+  "created_at": "ISO-8601",
+  "updated_at": "ISO-8601",
+  "owner_id": "anonymous-user-id",
+  "storage_path": "data/records/UUID.json",
+  "access_type": "private",
+  "status": "active",
+  "version": 1
+}
+```
+
+날짜와 시간은 가능하면 ISO 8601 형식으로 관리한다.
+
+---
+
+# 장애 복구 및 데이터 안전성
+
+다음 상황을 고려한다.
+
+```text
+사용자 입력 성공 + GitHub 호출 실패
+GitHub Action 실패
+Commit 실패
+Deploy 실패
+중복 Action 실행
+네트워크 중단
+동일 데이터 중복 요청
+Queue 정리 실패
+```
+
+따라서 데이터 처리 과정은 가능한 한 **Idempotent**하게 설계한다.
+
+같은 UUID가 이미 정상 처리되었다면 동일 데이터를 다시 생성하지 않는다.
+
+```text
+UUID 존재
+→ 기존 데이터 확인
+→ 중복 처리 방지
+
+UUID 없음
+→ 신규 저장
+```
+
+Queue 삭제는 항상 최종 저장 성공 이후 수행한다.
+
+완전 삭제보다:
+
+```text
+WAITING
+→ PROCESSING
+→ SYNCED
+→ CLEANUP
+```
+
+과 같이 단계적으로 처리하는 것이 더 안전하다면 해당 방식을 선택한다.
+
+---
+
+# 이 구조의 적용 판단
+
+이 구조 역시 모든 프로젝트의 기본값으로 사용하지 않는다.
+
+먼저 다음을 검토한다.
+
+```text
+LocalStorage만으로 충분한가?
+↓
+IndexedDB면 충분한가?
+↓
+Export / Import 기능이면 충분한가?
+↓
+정적 JSON이면 충분한가?
+↓
+Git Repository 기반 저장이면 충분한가?
+↓
+임시 Queue + GitHub Actions 방식이면 충분한가?
+↓
+그래도 요구사항을 만족하지 못하는가?
+↓
+그때 Backend / Database 검토
+```
+
+사용자 수가 많거나 다음 요구사항이 핵심이라면 GitHub를 억지로 DB처럼 사용하지 않는다.
+
+* 고빈도 실시간 Write
+* 많은 사용자의 동시 수정
+* 실시간 인증
+* 복잡한 Query
+* Transaction
+* 민감한 비공개 데이터의 동적 조회
+* 강한 데이터 일관성 보장
+
+이러한 경우에는 실제 Backend / Database 구조가 더 적합하다고 판단할 수 있다.
+
+---
+
+# 최종 적용 원칙
+
+사용자가 별도의 DB 구축을 명시적으로 요구하지 않았고 GitHub Pages 중심의 정적 구조를 원하는 경우, 저장 기능이 필요하다는 이유만으로 곧바로 Firebase, Supabase 또는 별도의 Database 서비스를 필수 의존성으로 추가하지 않는다.
+
+먼저 서비스 목적과 데이터 특성을 분석한 뒤 다음 방식을 우선 검토한다.
+
+```text
+Browser Storage
+Static Data
+File-based Storage
+Git-backed Storage
+Anonymous Access
+Temporary Queue
+GitHub Actions Automation
+```
+
+그중 필요한 요소만 선택적으로 조합한다.
+
+필요하다면 다음과 같은 구조도 하나의 선택지로 활용한다.
+
+```text
+GitHub Pages
++
+Google Apps Script
++
+Google Spreadsheet Temporary Queue
++
+GitHub Actions
++
+Git Repository
++
+Static JSON
++
+Anonymous User ID / Access Token / Recovery Code
+```
+
+이 구조의 목적은 **Database를 억지로 대체하는 것**이 아니라,
+
+> 별도의 DB와 상시 Backend가 없어도 충분히 구현 가능한 규모의 웹서비스에서 사용자의 데이터 저장·공유·재접근 기능을 안정적으로 제공하는 것
+
+이다.
+
+내가 특정 구현 방식을 예시로 제시했더라도 그것을 무조건 그대로 구현하지 말고, 동일한 목적을 더 단순하고 안전하게 달성할 수 있는 방법이 있다면 프로젝트 특성에 맞게 개선한다.
+
+단, **외부 Database 또는 유료 Backend 서비스를 무조건 전제로 설계를 변경하지 않는다.**
+
+
+
+
+## GitHub 저장소·배포·Windows 원클릭 Bootstrap 추가 요구사항
+
+프로젝트 코드 완성 시, 실제 GitHub Repository 생성 및 최초 배포까지 한 번에 처리할 수 있도록 Git 관련 산출물과 **Windows용 원클릭 Bootstrap/Provisioning `.cmd` 파일**도 함께 제공한다.
+
+### 1. GitHub Repository 기본 구성
+
+프로젝트 특성에 맞게 다음 항목을 함께 생성·정리한다.
+
+* `.gitignore`
+* `README.md` : 프로젝트 소개, 주요 기능, 설치/실행법, 빌드/배포법, 사용 기술, 폴더 구조 포함
+* 적절한 `LICENSE` 및 필요 시 `.gitattributes`
+* GitHub Repository Description 및 Topics/Tags 추천값
+* 초기 버전 태그 예: `v1.0.0`
+* Conventional Commits 기준의 의미 있는 최초 커밋 메시지
+* GitHub Pages 또는 GitHub Actions 배포에 필요한 Workflow
+* 프로젝트에 적절한 branch 및 Pages source 설정
+
+Repository 이름, 설명, 공개/비공개 여부 등이 별도로 지정되지 않았다면 프로젝트 성격에 맞는 안전한 기본값을 사용하되, `.cmd` 상단 변수만 수정하면 쉽게 변경할 수 있게 한다.
+
+### 2. Windows 원클릭 `.cmd`
+
+Windows 10/11에서 실행 가능한 `github-bootstrap.cmd`를 제공하며 다음 과정을 자동화한다.
+
+1. Git 설치 여부 및 버전 확인
+2. Node.js / npm 필요 프로젝트라면 설치 여부 및 버전 확인
+3. GitHub CLI(`gh`) 설치 여부 확인
+4. `gh auth status`로 GitHub 로그인 상태 확인
+5. 미로그인 상태라면 `gh auth login` 실행 안내 또는 로그인 절차 시작
+6. Git 사용자 이름/이메일 설정 여부 확인
+7. 로컬 Git Repository가 없으면 `git init`
+8. 기본 branch를 `main`으로 설정
+9. 필요한 dependency 설치 및 build/test 수행
+10. GitHub Repository 존재 여부 확인
+11. 없으면 `gh repo create`로 Repository 생성
+12. remote `origin` 자동 연결
+13. 전체 파일 add → 최초 commit
+14. `main` branch push 및 upstream 설정
+15. Repository Description / Homepage / Topics 등 가능한 설정 적용
+16. GitHub Pages 활성화
+17. 필요한 GitHub Actions Workflow 활성화 및 push
+18. 최초 배포 실행
+19. Actions 실행 상태를 확인하고 성공/실패 결과 표시
+20. 배포 URL을 최종 출력
+21. 성공 시 초기 Release/Tag(`v1.0.0`) 생성 및 push
+
+이미 Repository, remote, commit, tag 또는 설정이 존재하는 경우 오류로 중단하지 말고 **중복 생성하지 않는 idempotent 방식**으로 처리한다.
+
+각 단계에는 `[CHECK]`, `[OK]`, `[WARN]`, `[ERROR]`처럼 진행 상태를 명확히 표시하고, 실패 시 원인과 사용자가 직접 실행할 수 있는 복구 명령도 보여준다.
+
+토큰, 비밀번호, API Key 같은 비밀정보를 `.cmd`, Git Repository 또는 소스코드에 직접 기록하지 않는다.
+
+### 3. GitHub Pages / Actions 배포
+
+프로젝트 유형을 자동 판단하여 적절한 방식을 선택한다.
+
+* 순수 HTML/CSS/JS: GitHub Pages 직접 배포 우선
+* Vite/React/Vue 등 build 결과가 필요한 프로젝트: GitHub Actions를 통한 Pages 배포
+* `base path`, asset 경로, SPA routing 등 GitHub Pages에서 필요한 설정도 Repository 이름에 맞게 적용
+* Workflow 실행 후 `gh run watch` 또는 동등한 방법으로 실제 배포 완료 여부까지 확인
+* 최종 배포 URL을 README와 `.cmd` 결과에 표시
+
+### 4. 웹 미리보기·브랜딩 메타데이터
+
+웹 프로젝트에는 가능하면 다음 항목도 함께 구성한다.
+
+* `<title>`
+* meta description
+* Open Graph(`og:title`, `og:description`, `og:image`, `og:url`)
+* Twitter/X Card metadata
+* `favicon.ico`
+* SVG 또는 PNG favicon
+* Apple Touch Icon
+* `site.webmanifest`
+* 테마 컬러
+* GitHub Repository 및 SNS 공유 시 사용할 대표 Preview 이미지가 필요한 경우 제작용 파일 또는 템플릿도 포함
+
+아이콘은 프로젝트의 서비스명/로고/주제와 통일된 스타일로 구성하며, 별도 로고가 없다면 단순하고 식별하기 쉬운 SVG 기반 기본 아이콘을 함께 제공한다.
+
+### 5. 최종 산출물
+
+최종 결과에는 최소한 아래 파일이 포함되어야 한다.
+
+`README.md`, `.gitignore`, GitHub Actions Workflow, 필요한 GitHub Pages 설정, favicon/manifest 관련 파일, Git Repository 초기 설정 파일, `github-bootstrap.cmd`
+
+가능하면 `.cmd` 실행 한 번으로 **환경 확인 → GitHub 로그인 확인 → Repository 생성 → Git 초기화 → Commit/Push → Repository 설정 → Pages/Actions 설정 → 최초 배포 → 배포 성공 확인 → Git Tag 생성**까지 완료되도록 작성한다.

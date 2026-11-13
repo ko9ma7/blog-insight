@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#0e1014"/>
+  <meta name="description" content="개인용 네이버 블로그 키워드 분석 및 검색 트렌드 대시보드"/>
+  <title>블로그 인사이트 | 개인용 키워드 분석</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="블로그 인사이트"/>
+  <meta property="og:title" content="블로그 인사이트 | 개인용 키워드 분석"/>
+  <meta property="og:description" content="검색 관심도와 경쟁 블로그 글을 한눈에 비교하는 개인용 분석 대시보드"/>
+  <meta property="og:url" content="https://ko9ma7.github.io/blog-insight/"/>
+  <meta property="og:image" content="https://ko9ma7.github.io/blog-insight/assets/og-image.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="블로그 인사이트 | 개인용 키워드 분석"/>
+  <meta name="twitter:description" content="네이버 블로그 키워드 분석, 관심 키워드 비교, 검색 트렌드"/>
+  <meta name="twitter:image" content="https://ko9ma7.github.io/blog-insight/assets/og-image.png"/>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png"/>
+  <link rel="shortcut icon" href="./assets/favicon.ico"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png"/>
+  <link rel="manifest" href="./site.webmanifest"/>
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#analysis" aria-label="블로그 인사이트 홈"><span class="brand-square">BI</span><span>블로그<span class="brand-blue"> 인사이트</span></span><small>개인용</small></a>
+      <nav class="global-nav" aria-label="전체 메뉴"><a href="#analysis" class="nav-active">키워드</a><a href="#custom">맞춤 추천</a><a href="#rising">트렌드</a><a href="#myblog">내 블로그</a></nav>
+      <div class="top-actions"><span id="modeBadge" class="state-pill sample">샘플 모드</span><button id="settingsBtn" class="icon-button" title="연결 설정" aria-label="연결 설정">⚙</button></div>
+    </div>
+  </header>
+  <main class="layout">
+    <section class="tabs-row" aria-label="키워드 기능 선택">
+      <div class="tabs" role="tablist"><button class="tab active" data-tab="analysis" role="tab" aria-selected="true">＃ 키워드 분석</button><button class="tab" data-tab="custom" role="tab" aria-selected="false">✦ 맞춤 키워드</button><button class="tab" data-tab="trend" role="tab" aria-selected="false">♨ 뜨는 키워드</button><button class="tab" data-tab="rising" role="tab" aria-selected="false">⌁ 블로그 급상승</button><button class="tab" data-tab="myblog" role="tab" aria-selected="false">▤ 내 블로그</button></div>
+      <button id="helpBtn" class="ghost-small">ⓘ 사용 안내</button>
+    </section>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <section id="panel-analysis" class="panel active" role="tabpanel">
+      <div class="page-heading"><div><h1>키워드 분석</h1><p>키워드 검색 결과와 경쟁 블로그, 검색 관심도 추이를 확인하세요.</p></div><span id="analysisTime" class="muted tiny"></span></div>
+      <form id="searchForm" class="search-line"><label class="sr-only" for="keywordInput">검색할 키워드</label><input id="keywordInput" type="search" placeholder="분석할 키워드를 입력하세요" value="AI" maxlength="80" required/><button type="submit" class="primary">⌕ 검색</button></form>
+      <div class="recent-line"><span class="muted">최근</span><div id="recentKeywords" class="tags"></div><span class="limit-note">공식 API 기반 분석</span></div>
+      <div class="section-title"><h2 id="keywordTitle">AI</h2><button class="star-button" id="favoriteKeywordBtn" title="관심 키워드에 추가">☆</button></div>
+      <div class="analysis-grid">
+        <div class="left-stack">
+          <article class="metric-card"><div class="card-label">⌕ 네이버 블로그 검색 결과</div><div class="stat-hero" id="blogTotal">—</div><p class="subtle">네이버 블로그 검색 API의 전체 결과 수 (월간 발행량 아님)</p><div class="mini-divider"></div><div class="card-label">↗ 검색 관심도 · 최근 30일 <span class="muted float-right">상대지수 0~100</span></div><div id="trendChart" class="chart-height"></div><div id="trendDelta" class="trend-legend"></div></article>
+          <article class="metric-card"><div class="card-label">▤ 경쟁 블로그 콘텐츠</div><div class="small-metrics"><div><span class="muted">표시된 글</span><strong id="sampleResults">—</strong></div><div><span class="muted">서로 다른 블로그</span><strong id="uniqueBlogs">—</strong></div><div><span class="muted">최근 30일 발행</span><strong id="recentPosts">—</strong></div></div><div class="mini-divider"></div><p class="subtle">실제 통합검색 탭 순위 및 블로그 지수는 공식 API로 제공되지 않습니다.</p></article>
+        </div>
+        <div class="right-stack">
+          <article class="metric-card"><div class="card-label">▦ 분석 요약</div><div id="summaryChips" class="summary-chips"></div><p class="subtle">키워드 난이도 및 추천 점수는 공개 데이터 기반 참고치이며, 블덱스 지수와 다릅니다.</p></article>
+          <article class="metric-card"><div class="card-label">▥ 경쟁 콘텐츠 발행 시점 <span class="muted">· 표시된 검색 결과 기준</span></div><div id="publishBars" class="bar-chart"></div></article>
+          <article class="metric-card result-card"><div class="card-heading"><div><span class="card-label">⌕ 네이버 블로그 검색 결과</span><span class="chip blue">검색 API 순서</span></div><span id="resultCount" class="muted tiny">—</span></div><div class="table-wrapper"><table><thead><tr><th>순서</th><th>블로그</th><th>제목</th><th>작성일</th></tr></thead><tbody id="resultsBody"></tbody></table></div><div class="list-footer">클릭하면 원본 블로그 글이 새 탭에서 열립니다.</div></article>
+        </div>
+      </div>
+    </section>
+    <section id="panel-custom" class="panel" role="tabpanel" hidden>
+      <div class="page-heading"><div><h1>내게 맞는 키워드</h1><p>관심 주제를 비교하고, 상대적 검색 관심도와 경쟁 콘텐츠를 참고해 작성 우선순위를 정하세요.</p></div></div>
+      <div class="custom-top-grid"><article class="metric-card"><div class="card-label">◉ 내 블로그</div><div class="blog-id-row"><input id="customBlogId" class="field" placeholder="네이버 블로그 ID" maxlength="40"/><button id="saveBlogBtn" class="outline">저장</button></div><p class="subtle">블로그 ID와 키워드는 이 브라우저에만 저장됩니다.</p><div id="blogQuickStats" class="blog-quick">블로그 ID를 설정해 주세요.</div></article><article class="metric-card"><div class="card-label">✦ 내 관심 키워드 <span id="watchCount" class="muted"></span></div><div id="watchChips" class="tags expanded"></div><div class="watch-entry"><input id="watchInput" class="field" placeholder="키워드 추가 (최대 20개)" maxlength="80"/><button id="addWatchBtn" class="outline">+ 추가</button></div></article></div>
+      <div class="custom-main-grid"><article class="metric-card"><div class="card-heading"><span class="card-label">◉ 키워드 비교</span><button id="compareBtn" class="primary compact">선택 키워드 분석</button></div><p class="subtle">관심 키워드 중 최대 5개를 한 번에 비교합니다. 검색 관심도는 이 비교 그룹 내 상대지수입니다.</p><div id="compareChart" class="compare-chart"></div><div id="compareTable" class="table-wrapper"></div></article><article class="metric-card"><div class="card-label">추천 기준</div><div class="explain-rows"><div><b>① 검색 관심도</b><p>최근 관심도 상대지수가 높은가?</p></div><div><b>② 경쟁 결과 수</b><p>공개 검색 결과가 상대적으로 적은가?</p></div><div><b>③ 성장 변화</b><p>최근 관심도가 상승하는가?</p></div></div><div class="tip-box">이 추천은 추정치이며 실제 상위 노출을 보장하지 않습니다. 개인 블로그의 블덱스 지수나 실제 방문자 수를 계산하지 않습니다.</div></article></div>
+    </section>
+    <section id="panel-trend" class="panel" role="tabpanel" hidden>
+      <div class="page-heading"><div><h1>뜨는 키워드</h1><p>내가 지정한 주제의 검색 관심도 상승을 비교해 보세요.</p></div><span class="muted tiny">전국 실시간 인기 검색어 순위가 아닙니다.</span></div>
+      <form id="trendForm" class="search-line"><label for="trendTerms" class="sr-only">비교할 키워드</label><input id="trendTerms" value="AI, 챗GPT, 블로그, 여행, 노트북" placeholder="쉼표로 구분해 최대 5개 키워드 입력"/><button type="submit" class="primary">추세 비교</button></form>
+      <article class="metric-card"><div class="card-heading"><span class="card-label">↗ 키워드별 30일 검색 관심도</span><span class="muted tiny">네이버 데이터랩 · 상대지수</span></div><div id="multiTrendChart" class="large-chart"></div><div id="trendSeriesLegend" class="legend-flex"></div></article>
+      <div id="trendCards" class="trend-card-grid"></div>
+    </section>
+    <section id="panel-rising" class="panel" role="tabpanel" hidden>
+      <div class="page-heading"><div><h1>블로그 급상승 후보</h1><p>사용자가 선택한 키워드 중 최근 7일 관심도가 직전 7일보다 증가한 후보를 정렬합니다.</p></div><span class="muted tiny">네이버 전체 급상승 검색어 목록이 아닙니다.</span></div>
+      <article class="metric-card"><div class="card-heading"><span class="card-label">♨ 관심 키워드 상승률</span><button id="refreshRising" class="primary compact">업데이트</button></div><div class="rising-filter"><label for="risingTerms">분석 대상 키워드</label><input id="risingTerms" class="field" value="AI, 챗GPT, 블로그 수익화, 제주도 여행, 노트북, 홈카페, 여행 준비, 디지털 노마드"/></div><div id="risingGrid" class="rising-grid"></div></article>
+    </section>
+    <section id="panel-myblog" class="panel" role="tabpanel" hidden>
+      <div class="page-heading"><div><h1>내 블로그 분석</h1><p>공개 RSS를 읽어 최근 글과 자주 등장하는 제목 키워드를 확인합니다.</p></div></div>
+      <div class="blog-search-card metric-card"><label for="blogInput" class="card-label">네이버 블로그 ID</label><div class="search-line"><input id="blogInput" placeholder="예: myblogid" maxlength="40"/><button id="loadBlogBtn" class="primary">블로그 분석</button></div><p class="subtle">RSS 제공 여부와 공개 설정에 따라 일부 정보가 없을 수 있습니다. 구독자 수·방문자 수·블로그 지수는 제공하지 않습니다.</p></div>
+      <div id="blogOutput" class="blog-output"></div>
+    </section>
+    <footer>블로그 인사이트 · 개인용 오픈 소스 대시보드 · 네이버 및 블덱스와 무관한 독립 프로젝트 · 모든 지표의 출처와 한계를 표시합니다.</footer>
+  </main>
+  <dialog id="settingsDialog" class="modal"><form method="dialog" class="modal-inner"><div class="modal-head"><h2>연결 설정</h2><button value="cancel" class="icon-button" aria-label="닫기">✕</button></div><p>연결 전에는 모든 값이 <b>샘플 데이터</b>입니다. 실시간 조회를 위해 Cloudflare Worker를 배포하고 아래에 주소를 입력하세요.</p><label for="workerUrl">Worker 주소 (HTTPS)</label><input id="workerUrl" class="field" placeholder="https://my-worker.username.workers.dev" autocomplete="url"/><label for="accessToken">Worker 접근 토큰</label><input id="accessToken" type="password" class="field" placeholder="Worker에 설정한 ACCESS_TOKEN" autocomplete="off"/><p class="subtle">Worker 주소는 이 기기에 저장됩니다. 토큰은 탭을 닫으면 사라지는 세션 저장소에 보관되며 GitHub에 업로드되지 않습니다.</p><div class="modal-actions"><button id="demoBtn" type="button" class="outline">샘플 모드</button><button id="connectBtn" type="button" class="primary">연결 적용</button></div><p id="settingsStatus" class="subtle"></p></form></dialog>
+  <dialog id="helpDialog" class="modal"><form method="dialog" class="modal-inner"><div class="modal-head"><h2>사용 안내</h2><button value="cancel" class="icon-button">✕</button></div><p><b>샘플 모드</b>에서는 화면 체험용 임의 데이터만 표시합니다. 실시간 분석을 하려면 README의 안내에 따라 Worker를 배포하세요.</p><p><b>블로그 결과 수</b>는 검색 API가 알려주는 색인 결과 수이지 월간 발행량이 아닙니다. <b>검색 관심도</b>는 데이터랩의 상대지수이지 절대 검색량이 아닙니다.</p><p><b>키워드 추천</b>은 간단한 휴리스틱입니다. 블로그 실제 검색 탭 순위, 이웃 수, 블덱스 지수, 전국 급상승 키워드 순위는 제공되지 않습니다.</p><p><a href="https://developers.naver.com/docs/serviceapi/search/blog/blog.md" target="_blank" rel="noopener noreferrer">네이버 블로그 검색 API 안내 ↗</a></p></form></dialog>
+  <script src="./app.js" defer></script>
+</body>
+</html>

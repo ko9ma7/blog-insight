@@ -1,0 +1,53 @@
+name: Deploy Blog Insight to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'styles.css'
+      - '404.html'
+      - 'site.webmanifest'
+      - 'robots.txt'
+      - '.nojekyll'
+      - 'assets/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+      - name: Prepare public site only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site/assets
+          cp index.html app.js styles.css 404.html site.webmanifest robots.txt .nojekyll _site/
+          cp assets/* _site/assets/
+          test -s _site/index.html
+          ! grep -R -l --include='*.html' 'YOUR_GITHUB_ID' _site || (echo 'Complete the site URL metadata before deployment'; exit 1)
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload public site artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

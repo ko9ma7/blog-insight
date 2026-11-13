@@ -1,0 +1,8 @@
+name = "my-blog-insight-api"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[vars]
+# GitHub Pages 실제 사이트 주소로 바꾸세요. 경로(/저장소명)는 넣지 않습니다.
+ALLOWED_ORIGIN = "https://YOUR_GITHUB_ID.github.io"
